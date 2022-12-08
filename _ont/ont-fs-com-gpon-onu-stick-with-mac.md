@@ -162,7 +162,7 @@ bspatch <your_original_omcid> omcid omcid.bspatch
 After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
 If that also checks, go on making a backup copy of your original `omcid` on the stick.
 
-```
+```sh
 cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
