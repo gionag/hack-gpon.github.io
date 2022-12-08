@@ -157,9 +157,9 @@ Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
-(if you don't have bspatch installed, mose distributions includes that in the bsdiff package)
+(if you don't have bspatch installed, most distributions includes it in bsdiff package)
 
-After patching the resulting patched omcid shoudl have an md5 checksum of `525139425009c4138e92766645dad7d0`.
+After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
 If that also checks, go on making a backup copy of your original `omcid` on the stick.
 
 ```
@@ -167,7 +167,8 @@ cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
 
-Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
+And finally to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick.
+After that you can change the image version with the command:
 
 ```
 fw_setenv image0_version YOUR_IMAGE0_VERSION
