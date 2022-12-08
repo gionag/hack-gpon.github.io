@@ -153,7 +153,7 @@ AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
 IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
 ```
 Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
-```shsh
+```sh
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
@@ -162,7 +162,7 @@ bspatch <your_original_omcid> omcid omcid.bspatch
 After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
 If that also checks, go on making a backup copy of your original `omcid` on the stick.
 
-```shsh
+```sh
 cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
@@ -181,7 +181,7 @@ fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
 Now you can restart the stick.
-
+{% include alert.html content="Be aware that sometimes `omcid` can rewrite the two variables when runs in non patched state. After reboot, double check the values you put are still there." alert="Info" icon="svg-info" color="blue" %}
 
 ## Setting Lantiq MAC address
 ```sh
