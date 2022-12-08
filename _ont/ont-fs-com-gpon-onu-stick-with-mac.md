@@ -170,7 +170,7 @@ cp omcid omcid.original
 And finally to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick.
 After that you can change the image version with the command:
 
-```
+```sh
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
