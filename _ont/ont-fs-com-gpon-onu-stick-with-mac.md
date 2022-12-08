@@ -153,7 +153,7 @@ AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
 IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
 ```
 Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
-```
+```sh
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
@@ -162,19 +162,24 @@ bspatch <your_original_omcid> omcid omcid.bspatch
 After patching the resulting patched `omcid` should have an md5 checksum of `525139425009c4138e92766645dad7d0`.
 If that also checks, go on making a backup copy of your original `omcid` on the stick.
 
-```
+```sh
 cd /opt/lantiq/bin
 cp omcid omcid.original
 ```
 
-And finally to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick.
-After that you can change the image version with the command:
+And finally to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path.
+Before restarting the stick and applying changes, make sure omcid has execution bit set.
 
+```sh
+chmod ugo+x /opt/lantiq/bin/omcid
 ```
+Is also a good time to set the image0/image1_version. Crash has reported if they are not set correctly before reboot.
+```sh
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
 ```
 
+Now you can restart the stick.
 
 ## Setting Lantiq MAC address
 ```sh
