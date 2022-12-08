@@ -153,7 +153,7 @@ AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
 IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
 ```
 Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
-```
+```sh
 base64 -d omcid_patch.base64 > omcid.bspatch
 bspatch <your_original_omcid> omcid omcid.bspatch
 ```
