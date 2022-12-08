@@ -144,20 +144,31 @@ so you need to then modify the binary with the following hex patch which removes
 
 ```
 
-To make it easier you can use the following base64:
+Before proceeding, make sure your `/opt/lantiq/bin/omcid` has the correct md5 checksum `7e97163e24c9cb39439589c65b438168`. If that checks, you can proceed building the patched file:
+
+This is the patch, encoded in base64
 ```
 QlNESUZGNDA1AAAAAAAAAD4AAAAAAAAA2C8JAAAAAABCWmg5MUFZJlNZYqnvBwAACFBSQWAAAMAA
 AAgAQCAAMQwIIwjImgDOdMvi7kinChIMVT3g4EJaaDkxQVkmU1lrJSbUAACFTAjAACAAAAiCAAAI
 IABQYAFKQ01INxUgd6Soj2JURm8pUR8XckU4UJBrJSbUQlpoORdyRThQkAAAAAA=
 ```
-
-Save it as `omcid_patch.base64`, then run:
+Save it on your computer (not on the stick) as `omcid_patch.base64`, then run:
 ```
-base64 -d omcid_patch.base64 > omcid.bspath
-bspatch <your_original_omcid> omcid omcid.bspath
+base64 -d omcid_patch.base64 > omcid.bspatch
+bspatch <your_original_omcid> omcid omcid.bspatch
+```
+(if you don't have bspatch installed, mose distributions includes that in the bsdiff package)
+
+After patching the resulting patched omcid shoudl have an md5 checksum of `525139425009c4138e92766645dad7d0`.
+If that also checks, go on making a backup copy of your original `omcid` on the stick.
+
+```
+cd /opt/lantiq/bin
+cp omcid omcid.original
 ```
 
 Now you have to copy via SCP the modified `omcid` binary in the `/opt/lantiq/bin/omcid` path, restart the stick and after that you can change the image version with the command:
+
 ```
 fw_setenv image0_version YOUR_IMAGE0_VERSION
 fw_setenv image1_version YOUR_IMAGE1_VERSION
